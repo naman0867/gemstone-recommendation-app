@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 
 function History() {
   const [history, setHistory] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchHistory();
@@ -18,6 +19,8 @@ function History() {
       setHistory(res.data.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -25,38 +28,83 @@ function History() {
     <>
       <Navbar />
 
-      <div className="p-10">
-        <h1 className="text-4xl font-bold mb-6">
-          Recommendation History
-        </h1>
+      <div className="min-h-screen bg-gray-100 p-8">
+        <div className="max-w-5xl mx-auto bg-white p-8 rounded-xl shadow-lg">
 
-        <table className="w-full border">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="p-3">Zodiac</th>
-              <th className="p-3">Gemstone</th>
-              <th className="p-3">Purpose</th>
-            </tr>
-          </thead>
+          <h1 className="text-4xl font-bold text-center mb-2">
+            📜 Recommendation History
+          </h1>
 
-          <tbody>
-            {history.map((item) => (
-              <tr key={item._id}>
-                <td className="p-3 border">
-                  {item.zodiac}
-                </td>
+          <p className="text-center text-gray-600 mb-8">
+            View all your previous gemstone recommendations
+          </p>
 
-                <td className="p-3 border">
-                  {item.gemstone}
-                </td>
+          {loading ? (
+            <div className="text-center py-10">
+              Loading...
+            </div>
+          ) : history.length === 0 ? (
+            <div className="text-center py-10">
+              <h2 className="text-2xl font-semibold">
+                No Recommendations Yet
+              </h2>
 
-                <td className="p-3 border">
-                  {item.purpose}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+              <p className="text-gray-500 mt-2">
+                Generate your first gemstone recommendation from the Dashboard.
+              </p>
+            </div>
+          ) : (
+            <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
+              <thead>
+                <tr className="bg-indigo-600 text-white">
+                  <th className="p-3">
+                    Zodiac
+                  </th>
+
+                  <th className="p-3">
+                    Gemstone
+                  </th>
+
+                  <th className="p-3">
+                    Purpose
+                  </th>
+
+                  <th className="p-3">
+                    Date
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {history.map((item) => (
+                  <tr
+                    key={item._id}
+                    className="text-center border-b"
+                  >
+                    <td className="p-3">
+                      {item.zodiac}
+                    </td>
+
+                    <td className="p-3 font-semibold text-indigo-600">
+                      {item.gemstone}
+                    </td>
+
+                    <td className="p-3">
+                      {item.purpose}
+                    </td>
+
+                    <td className="p-3">
+                      {new Date(
+                        item.createdAt
+                      ).toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+
+        </div>
       </div>
     </>
   );
