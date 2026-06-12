@@ -8,7 +8,7 @@ const recommendationRoutes = require("./routes/recommendationRoutes");
 
 dotenv.config();
 
-// Connect to MongoDB
+// Connect MongoDB
 connectDB();
 
 const app = express();
@@ -19,20 +19,19 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/recommendations", recommendationRoutes);
+app.use(
+  "/api/recommendations",
+  recommendationRoutes
+);
 
-// Test Route
+// Health Check Route
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message: "Gemstone Recommendation API Running",
+    message:
+      "Humara Pandit API Running",
   });
 });
 
-// Port
-const PORT = process.env.PORT || 5000;
-
-// Start Server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+// IMPORTANT FOR VERCEL
+module.exports = app;
