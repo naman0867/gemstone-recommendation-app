@@ -13,20 +13,8 @@ connectDB();
 
 const app = express();
 
-// CORS FIX
-app.use(
-  cors({
-    origin: [
-      "https://gemstone-recommendation-app-wng1.vercel.app",
-      "http://localhost:5173",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-    ],
-  })
-);
+// Allow requests from anywhere
+app.use(cors());
 
 app.use(express.json());
 
@@ -38,7 +26,7 @@ app.use(
   recommendationRoutes
 );
 
-// Health Check
+// Health Check Route
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
