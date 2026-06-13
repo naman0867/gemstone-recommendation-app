@@ -1,16 +1,152 @@
-# React + Vite
+# 🔮 Humara Pandit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Humara Pandit is a full-stack gemstone recommendation platform that provides personalized gemstone suggestions based on a user's birth date, zodiac sign, and life goals.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Authentication
 
-## React Compiler
+* User Registration
+* User Login
+* JWT-based Authentication
+* Protected Routes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Gemstone Recommendation Engine
 
-## Expanding the ESLint configuration
+* Birth Date Input
+* Zodiac Sign Calculation
+* Personalized Gemstone Recommendation
+* Purpose-based Suggestions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Recommendation History
+
+* View Previous Recommendations
+* Store Recommendations in MongoDB
+* User-specific Recommendation Records
+
+### User Interface
+
+* Responsive Design
+* Modern Tailwind CSS UI
+* Gemstone Images
+* Easy Navigation
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* React.js
+* Vite
+* React Router DOM
+* Axios
+* Tailwind CSS
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* JWT Authentication
+* bcryptjs
+
+---
+
+## Project Structure
+
+```text
+gemstone-recommendation-app/
+│
+├── client/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── server/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── config/
+│   └── server.js
+│
+├── README.md
+└── AI_USAGE.md
+```
+
+## Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/naman0867/gemstone-recommendation-app.git
+cd gemstone-recommendation-app
+```
+
+### Backend Setup
+
+```bash
+cd server
+npm install
+npm run dev
+```
+
+Create a .env file:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+```
+
+### Frontend Setup
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+---
+
+## Application Workflow
+
+1. User registers an account.
+2. User logs in.
+3. JWT token is generated.
+4. User accesses Dashboard.
+5. User enters birth date and purpose.
+6. Backend calculates zodiac sign.
+7. Appropriate gemstone recommendation is generated.
+8. Recommendation is stored in MongoDB.
+9. User can view recommendation history.
+
+---
+
+## Security Features
+
+* Password Hashing using bcryptjs
+* JWT Authentication
+* Protected API Routes
+* User-specific Data Access
+
+---
+
+## Future Improvements
+
+* AI-powered Recommendation Engine
+* Detailed Astrology Reports
+* Astrologer Consultation Booking
+* Admin Dashboard
+* Recommendation Analytics
+* Mobile Application
+
+---
+
+## Author
+
+Naman Kumar
+
+Project developed as part of the technical assignment submission.
