@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://humara-pandit-backend.vercel.app/api",
+  baseURL: "https://gemstone-recommendation-app-ught.vercel.app/api",
 });
 
 API.interceptors.request.use((config) => {
